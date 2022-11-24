@@ -231,3 +231,5 @@ MonoBehaviour:
   ammoPowerUp: 1
   ammoAmount: 1
   turnSpeed: -1
+  period: 2
+  scaleVector: {x: 0.2, y: 0.2, z: 0.2}
