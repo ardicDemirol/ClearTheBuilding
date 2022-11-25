@@ -7,7 +7,25 @@ public class Attack : MonoBehaviour
     [SerializeField] private GameObject ammo;
     [SerializeField] private Transform fireTransform;
     [SerializeField] private int maxAmmoCount = 5;
+    [SerializeField] private bool isPlayer = false;
     private int ammoCount = 0;
+    
+
+    [SerializeField] private float fireRate = 0.5f;
+
+    private float currentFireRate = 0f;
+
+    public float GetCurrentFireRate
+    {
+        get
+        {
+            return currentFireRate;
+        }
+        set
+        {
+            currentFireRate = value;
+        }
+    }
     public int GetAmmo
     {
         get
@@ -17,16 +35,20 @@ public class Attack : MonoBehaviour
         set
         {
             ammoCount = value;
-            if(ammoCount > maxAmmoCount)
+            if (ammoCount > maxAmmoCount)
             {
                 ammoCount = maxAmmoCount;
             }
         }
     }
+    public int GetClipSize
+    {
+        get
+        {
+            return maxAmmoCount;
+        }
+    }
 
-    [SerializeField] private float fireRate = 0.5f;
-
-    private float currentFireRate = 0f;
 
     void Start()
     {
@@ -45,18 +67,22 @@ public class Attack : MonoBehaviour
         {
             currentFireRate -= Time.deltaTime;
         }
-        if (Input.GetMouseButtonDown(0))
+        if (isPlayer)
         {
-            if(currentFireRate <= 0 && ammoCount > 0)
+            if (Input.GetMouseButtonDown(0))
             {
-                Fire();
-                
+                if (currentFireRate <= 0 && ammoCount > 0)
+                {
+                    Fire();
+
+                }
             }
         }
+       
             
     }
 
-    void Fire()
+    public void Fire()
     {
         float difference = 180f - transform.eulerAngles.y;
         float targetRotation = -90f;

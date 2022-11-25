@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 3364936460241665346}
   - component: {fileID: 1227899819}
   - component: {fileID: 1227899820}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -250,8 +250,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammo: {fileID: 4051223932618320575, guid: 5d34c5c2676c5334cb452f285891862a, type: 3}
   fireTransform: {fileID: 3307149672620054555}
+  maxAmmoCount: 5
+  isPlayer: 1
   fireRate: 0.5
-  ammoCount: 5
 --- !u!135 &1227899819
 SphereCollider:
   m_ObjectHideFlags: 0
