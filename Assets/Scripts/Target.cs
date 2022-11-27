@@ -7,6 +7,12 @@ public class Target : MonoBehaviour
     [SerializeField] int maxHealth = 5;
     private int currentHealth;
 
+    [SerializeField] private GameObject hitFx;
+    [SerializeField] private GameObject deathFx;
+
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip clipToPlay;
+
     public int GetHealth
     {
         get 
@@ -27,6 +33,7 @@ public class Target : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -50,13 +57,21 @@ public class Target : MonoBehaviour
             if(bullet.owner != gameObject)
             {
                 currentHealth--;
-
+                audioSource.PlayOneShot(clipToPlay);
+                if(hitFx != null && currentHealth > 0)
+                {
+                    Instantiate(hitFx,transform.position,Quaternion.identity);
+                    
+                    
+                }
                 if (currentHealth <= 0)
                 {
                     Die();
                 }
+               
 
                 Destroy(other.gameObject);
+                
 
             }
 
@@ -67,6 +82,11 @@ public class Target : MonoBehaviour
 
     void Die()
     {
+        if (deathFx != null)
+        {
+            Instantiate(deathFx, transform.position, Quaternion.identity);
+        }
+
         Destroy(gameObject);
     }
 }

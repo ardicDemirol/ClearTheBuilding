@@ -11,18 +11,22 @@ public class Movement : MonoBehaviour
     [SerializeField] float turnSpeed = 5f;
     [SerializeField] private Transform[] rayStartPoints;
 
+    private GameManager gameManager;
+
 
 
     
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();  
         myRigidbody = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        TakeInput();
-        Debug.Log(OnGroundCheck());
+        if (!gameManager.GetLevelFinish) { TakeInput(); }
+        
+        
     }
 
     private void TakeInput()

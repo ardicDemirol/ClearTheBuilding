@@ -62,11 +62,11 @@ public class Enemy : MonoBehaviour
 
     private void CheckCanMoveRight()
     {
-        if (Vector3.Distance(transform.position, movePoints[0].position) <= 0.1f)
+        if (Vector3.Distance(transform.position, new Vector3(movePoints[0].position.x, transform.position.y, movePoints[0].position.z)) <= 0.1f)
         {
             canMoveRight = true;
         }
-        else if (Vector3.Distance(transform.position, movePoints[1].position) <= 0.1f)
+        else if (Vector3.Distance(transform.position, new Vector3(movePoints[1].position.x, transform.position.y, movePoints[0].position.z)) <= 0.1f)
         {
             canMoveRight= false;
         }

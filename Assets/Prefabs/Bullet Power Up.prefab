@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 1279372479940849172}
   - component: {fileID: 6228892361175647133}
   - component: {fileID: 8164530999059015269}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bullet Power Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}

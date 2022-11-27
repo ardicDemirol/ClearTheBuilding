@@ -110,10 +110,11 @@ GameObject:
   - component: {fileID: 2491905297426209306}
   - component: {fileID: 875846000307496180}
   - component: {fileID: 3587131023775233804}
-  m_Layer: 0
+  - component: {fileID: 821090874446402349}
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
-  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -225,7 +226,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4988194985860817294}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1
@@ -242,10 +243,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584fb6ae2011b1d48a38b8a5248f0cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 6834413004281731637}
   ammo: {fileID: 4051223932618320575, guid: 5d34c5c2676c5334cb452f285891862a, type: 3}
+  isPlayer: 0
   fireTransform: {fileID: 2432781976024350531}
-  maxAmmoCount: 5
-  fireRate: 0.5
 --- !u!114 &875846000307496180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,6 +261,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
+  hitFx: {fileID: 3942421684312552919, guid: 8603cf24771844443b4cee23b0eac5af, type: 3}
+  deathFx: {fileID: 3645232123800108184, guid: da4bbf9f5ef24114f9eabc254778714c, type: 3}
+  clipToPlay: {fileID: 8300000, guid: a96280ab0386e384fa0633e56101bb6f, type: 3}
 --- !u!114 &3587131023775233804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,6 +280,108 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   speed: 5
+  shootRange: 10
+  reloadTime: 5
+  shootLayer:
+    serializedVersion: 2
+    m_Bits: 192
+  aimTransform: {fileID: 2432781976024350531}
+--- !u!82 &821090874446402349
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4988194985860817294}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.3
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4988194986801186478
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +476,6 @@ GameObject:
   - component: {fileID: 1958055481678871004}
   - component: {fileID: 4181725066899373873}
   - component: {fileID: 4117315664187194662}
-  - component: {fileID: 7560883991256675898}
   m_Layer: 0
   m_Name: Handle
   m_TagString: Untagged
@@ -442,20 +548,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7560883991256675898
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5280520721737429695}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &5419630136819347111
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,7 +559,6 @@ GameObject:
   - component: {fileID: 3680658430604470310}
   - component: {fileID: 2741988840453380397}
   - component: {fileID: 2669882591637192706}
-  - component: {fileID: 2995154590316801818}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -540,20 +631,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2995154590316801818
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5419630136819347111}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &6834413004281731637
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,6 +640,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3936026708521878596}
+  - component: {fileID: 682740882}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -588,6 +666,23 @@ Transform:
   m_Father: {fileID: 4988194985860817288}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &682740882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6834413004281731637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d5cd45bef5c6bf4d8c04c0d29b25a3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: {fileID: 2491905297426209306}
+  fireTransform: {fileID: 2432781976024350531}
+  clipSize: 5
+  fireRate: 1
+  clip: {fileID: 0}
 --- !u!1 &9010012355882912188
 GameObject:
   m_ObjectHideFlags: 0
