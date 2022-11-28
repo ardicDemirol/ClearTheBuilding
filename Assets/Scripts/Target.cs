@@ -13,6 +13,10 @@ public class Target : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] private AudioClip clipToPlay;
 
+    [SerializeField] private int point;
+
+    
+
     public int GetHealth
     {
         get 
@@ -29,14 +33,13 @@ public class Target : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
         audioSource = GetComponent<AudioSource>();
+         
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Z))
@@ -57,6 +60,7 @@ public class Target : MonoBehaviour
             if(bullet.owner != gameObject)
             {
                 currentHealth--;
+                ScoreManager.scoreValue += point;
                 audioSource.PlayOneShot(clipToPlay);
                 if(hitFx != null && currentHealth > 0)
                 {
@@ -69,9 +73,7 @@ public class Target : MonoBehaviour
                     Die();
                 }
                
-
                 Destroy(other.gameObject);
-                
 
             }
 
@@ -80,8 +82,10 @@ public class Target : MonoBehaviour
         }
     }
 
+
     void Die()
     {
+        
         if (deathFx != null)
         {
             Instantiate(deathFx, transform.position, Quaternion.identity);
@@ -89,4 +93,6 @@ public class Target : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+
 }

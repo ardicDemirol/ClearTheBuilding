@@ -11,10 +11,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float reloadTime = 5f;
     [SerializeField] private LayerMask shootLayer;
     [SerializeField] private Transform aimTransform;
-
+    
+  
     private bool isReloaded = false;
     private bool canMoveRight = false;
     private Attack attack;
+
+    
 
     void Start()
     {
