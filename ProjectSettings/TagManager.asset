@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Teleport
+  - Poison
+  - Ground
+  - Restart
   layers:
   - Default
   - TransparentFX

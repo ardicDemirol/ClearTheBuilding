@@ -3,7 +3,11 @@ guid: 971213a7bb9b50b42893f314b5537cda
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - hitFx: {instanceID: 0}
+  - deathFx: {instanceID: 0}
+  - clipToPlay: {instanceID: 0}
+  - levelRestartParent: {fileID: 8187809423070261530, guid: f8a9852b733585d4b92707a32d7cf93d, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

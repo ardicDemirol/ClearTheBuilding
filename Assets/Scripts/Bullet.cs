@@ -34,5 +34,14 @@ public class Bullet : MonoBehaviour
             score += point;
             Debug.Log(point);
         }
+       
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Box")
+        {
+            Destroy(gameObject);
+        }
     }
 }

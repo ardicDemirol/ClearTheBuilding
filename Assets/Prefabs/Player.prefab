@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 3364936460241665346}
   - component: {fileID: 1227899819}
   - component: {fileID: 1227899820}
+  - component: {fileID: 1864795544629015200}
   - component: {fileID: 7567149465943302796}
   m_Layer: 7
   m_Name: Player
@@ -283,9 +284,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 971213a7bb9b50b42893f314b5537cda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 10
   hitFx: {fileID: 3942421684312552919, guid: 8603cf24771844443b4cee23b0eac5af, type: 3}
   deathFx: {fileID: 3645232123800108184, guid: da4bbf9f5ef24114f9eabc254778714c, type: 3}
+  clipToPlay: {fileID: 8300000, guid: a96280ab0386e384fa0633e56101bb6f, type: 3}
+  point: 0
+--- !u!114 &1864795544629015200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5268650411747198678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ada741bf1ecfe240bb96223620e6be0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportPoints: []
 --- !u!82 &7567149465943302796
 AudioSource:
   m_ObjectHideFlags: 0

@@ -29,33 +29,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        int enemyCount = FindObjectsOfType<Enemy>().Length;
-        
-        sceneIndex = SceneManager.sceneCountInBuildSettings - 1;
-
-
-        if (enemyCount <= 0) // || playerHealth.GetHealth <= 0)
-        {
-            if (sceneIndex == 1)
-            {
-                levelNextParent.gameObject.SetActive(true);
-                //levelRestartParent.gameObject.SetActive(true);
-            }
-            if (sceneIndex == 2)
-            {
-                levelNextParent.gameObject.SetActive(true);
-            }
-
-        }
-        if(playerHealth.GetHealth <= 0)
-        {
-            if(sceneIndex < sceneCount)
-            {
-                levelRestartParent.gameObject.SetActive(true);
-            }
-            
-            //levelFinished = false;
-        }
+        Check();
     }
 
     public void RestartLevel()
@@ -78,5 +52,36 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(0);
         }
 
+    }
+
+    public void Check()
+    {
+        int enemyCount = FindObjectsOfType<Enemy>().Length;
+
+        sceneIndex = SceneManager.sceneCountInBuildSettings - 1;
+
+
+        if (enemyCount <= 0) 
+        {
+            if (sceneIndex == 1)
+            {
+                levelNextParent.gameObject.SetActive(true);
+                //levelRestartParent.gameObject.SetActive(true);
+            }
+            if (sceneIndex == 2)
+            {
+                levelNextParent.gameObject.SetActive(true);
+            }
+
+        }
+        if (playerHealth.GetHealth <= 0)
+        {
+            if (sceneIndex < sceneCount)
+            {
+                levelRestartParent.gameObject.SetActive(true);
+            }
+
+            //levelFinished = false;
+        }
     }
 }
