@@ -9,6 +9,7 @@ TagManager:
   - Poison
   - Ground
   - Restart
+  - Box
   layers:
   - Default
   - TransparentFX

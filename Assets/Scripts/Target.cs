@@ -37,7 +37,6 @@ public class Target : MonoBehaviour
 
     void Start()
     {
-        
         currentHealth = maxHealth;
         audioSource = GetComponent<AudioSource>();
 
@@ -89,12 +88,19 @@ public class Target : MonoBehaviour
     {
         if (collision.gameObject.tag == "Poison")
         {
-            Die();
-            levelRestartParent.gameObject.SetActive(true);
-            Destroy(collision.gameObject);
-            Instantiate(hitFx,collision.gameObject.transform.position, Quaternion.identity);
+            if(gameObject.tag == "Box")
+            {
+                Destroy(collision.gameObject);
+            }
+            else
+            {
+                Die();
+                levelRestartParent.gameObject.SetActive(true);
+                Destroy(collision.gameObject);
+                Instantiate(hitFx, collision.gameObject.transform.position, Quaternion.identity);
+            }
+            
         }
-        
     }
 
 
